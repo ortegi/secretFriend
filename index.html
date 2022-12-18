@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Friend</title>
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"> 
+    <!--Css custom-->
+    <link rel="stylesheet" href="./style.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <!--font awsoeme-->
+    <script src="https://kit.fontawesome.com/cead86de7a.js" crossorigin="anonymous"></script>
+    <script src="main.js" type="module"> </script>
+    <!--toastify-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    
+    
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+                
+            <div class="col text-center">
+                <img src="robotin.png" height="200" width="200">
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col text-center">
+
+                <h1 class="text-light">Amigo invisible</h1>
+
+                <h3 id="secretCodeHolder"> </h3>
+            </div>
+            
+
+
+        </div>
+
+        <div class="row" id="startPage">
+            <div class="col text-center btn-col">
+            
+                <button type="button" class="btn btn-primary btn-lg" onclick="next('startPage', 'sorteoPage');codeGenerator();">Empezar un sorteo</button>
+                <button type="button" class="btn btn-primary btn-lg" onclick="next('startPage', 'addCode')">Unirse a un sorteo</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--Codigo de sorteo-->
+    <div class="row" id="sorteoPage">
+        <div class="col text-center lay">
+            <h3>Codigo de sorteo</h3>
+            <div id="codeDiv">
+                <input id="codigoSorteo" type="text"> 
+                <button class = 'btn btn-primary'onclick="copy()">Copy code</button>
+            </div>
+            
+
+            <button type="button" class="btn btn-primary btn-lg" onclick="next('sorteoPage', 'AddNumPeople'); setCode();">Siguiente</button>
+        </div>
+
+    </div>
+
+    </div>
+
+     <!--ADD numero de partipantes-->
+     <div class="row" id="AddNumPeople">
+        <div class="col text-center lay">
+            <div class="input-group mb-3">
+                <h3 class='text-center'>Añadir número de parcipantes</h3>
+                <input type="number" id="participantes" class="form-control participants-form" placeholder = '5'>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg" id="participantsBtn" onclick="checkForms('participantes', 'AddNumPeople', 'addMoney');">Siguiente</button>
+        </div>
+
+    </div>
+
+    <!--Añadir monto del regalo-->
+
+    <div class="row" id="addMoney">
+        <div class="col text-center lay"> 
+            <div class="input-group mb-3">
+                <h3 class='text-center'>Añadir precio del regalo</h3>
+                <input type="number" id='form-money' class="form-control money" placeholder = '200' aria-label="Amount (to the nearest dollar)">
+                <div class="input-group-append">
+                  <span class="input-group-text">.00€</span>
+                </div>
+            </div>
+            <button type="button" id= 'moneyBtn' class="btn btn-primary btn-lg" onclick="checkForms('form-money', 'addMoney', 'addName');">Siguiente</button>
+        </div>
+
+    </div>
+
+    <!--Añadir nombre-->
+
+
+    <div class="row" id="addName">
+        <div class="col text-center lay">
+            <div class="inputName">
+                <h3 class='text-center'>Añadir nombre</h3> 
+                <input type="text" id="yourName" class="yourName-form" placeholder = 'Maria'>
+            </div>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkForms('yourName', 'addName', 'waitingPage'); saveData('participantes', 'yourName');">Siguiente</button>
+        </div>
+
+    </div>
+    
+    
+<!--Página  de espera-->
+    <div class="row" id="waitingPage">
+        <div class="col text-center lay">
+            <span class="loader" id="load"></span>
+            <div class="waitingDiv">
+                <h3 class='text-center' id="aviso1">Esperando a participantes...</h3>
+                <p>Participantes unidos <span id="joinedPeople"> 1</span> / <span id="toJoin"> </span> </p>
+                <ul class="list-group names-post"> </ul>
+
+            </div>
+
+            <p id="aviso"> </p>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="getDataList(); next('waitingPage', 'finalForAdmi');">Empezar sorteo</button>
+        </div>
+
+    </div>
+
+
+
+    <!--Página fin de sorteo!-->
+
+    <div class="row" id="finalForAdmi">
+
+        <div class="col text-center lay">
+            <h3>Sorteo realizado!</h3>
+            <h3 >¿Quien será tu amigo invisible?</h3>
+            <button class="magicBtn" onclick="next('finalForAdmi', 'secretNameAdmin'); displaySecretFriend('admin')">Descubrir</button>
+
+        </div>
+
+    </div>
+
+
+    <div class="row" id="secretNameAdmin">
+
+        <div class="col text-center lay">
+
+            <h2> Le regalas a:</h2>
+
+            <h3 id="secretAdmin"> </h3>
+
+            <i class="fa-solid fa-gift fa-3x"></i>
+        </div>
+
+
+    </div>
+
+ <!--Unirse a un sorteo Codigo -->
+
+    <div class="row" id="addCode">
+        <div class="col text-center lay">
+            
+            <h3> Añade el codigo</h3>
+            <input class="form-control" type="text" placeholder="6A7D8A" id="code">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkForms('code', 'addCode', 'addNameToJoin')">Siguiente</button>
+        </div>
+
+
+    </div>
+
+    <!--Nombre-->
+
+    <div class="row" id="addNameToJoin">
+
+        <div class="col text-center lay">
+            
+            <h3> Dinos tu nombre</h3>
+            <input class="form-control" type="text" placeholder="Juanito" id="nameToJoin">
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkForms('nameToJoin', 'addNameToJoin', 'waintingJoin'); saveDataJoinSorteo()">Siguiente</button>
+        </div>
+
+
+    </div>
+
+    <!--Waiting page Join-->
+
+    <div class="row" id="waintingJoin">
+
+        <div class="col text-center lay">
+
+            <span class="loader" id="load1"></span>
+            <div class="waitingDiv">
+                <h3 class='text-center' id="aviso3">Esperando a participantes...</h3>
+                <p>Participantes unidos <span id="joinedPeople1"> 1</span> / <span id="toJoin1"> </span> </p>
+
+
+            </div>
+           
+
+            <div id="get88">
+                <h3>Sorteo en proceso...</h3>
+                <h3>Espera unos segundos!</h3>
+                <button class="btn btn-primary btn-lg btn-block" onclick="next('waintingJoin', 'getsecretName')"> Siguiente</button>
+            </div>
+           
+            
+        </div>
+        
+    </div>
+
+   <!--Fin-->
+
+    <div class="row" id="getsecretName">
+
+        <div class="col text-center lay">
+            
+            <h3>Sorteo realizado!</h3>
+            <h3 >¿Quien será tu amigo invisible?</h3>
+            <button class="magicBtn" onclick="next('getsecretName','secretName'); displaySecretFriend('noAdmin');">Descubrir</button>
+
+            
+        </div>
+        
+        
+    </div>
+
+    <div class="row" id="secretName">
+
+        <div class="col text-center lay">
+
+            <h2> Le regalas a:</h2>
+
+            <h3 id="secretUser"> </h3>
+
+            
+            <i class="fa-solid fa-gift fa-3x"></i>
+        </div>
+        
+
+
+    </div>
+
+    
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"> </script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>

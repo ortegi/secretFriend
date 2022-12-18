@@ -1,0 +1,234 @@
+
+@import url('https://fonts.googleapis.com/css?family=Warnes&display=swap');
+
+
+body{
+    background-color: #323350;
+    font-family: 'Source Code Pro', monospace;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
+ 
+
+
+img{
+    border-radius: 50%;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 44px;
+}
+
+button.btn.btn-primary.btn-lg{
+    background-color: #AB110D;
+    border-radius: 12px;
+    padding: 15px;
+    width: 90%;
+    margin: 10px 0px;
+}
+
+button.btn.btn-primary.btn-lg.btn-block:active {
+    background-color: transparent ;
+    border: 1px solid white ;
+    color: white;
+    
+}
+
+.btn-col{
+    margin-top: 50px;
+
+}
+
+
+input.form-control {
+    margin: 22px auto;
+    width: 90%;
+    font-size: 1.2rem;
+}
+
+.lay{
+    margin-top: 20px;
+}
+
+#addParticipant, #AddNumPeople, #sorteoPage, #addMoney, #waitingPage, #addName, #addCode, #addNameToJoin, #getsecretName, #waintingJoin, #secretName, #secretNameAdmin{
+    display: none;
+}
+
+
+
+
+span.input-group-text {
+    font-size: 1.3rem;
+    position: relative;
+    top: 20px;
+}
+
+.input-group.mb-3 {
+    margin: 0 auto;
+    width: 90%;
+}
+
+.loader {
+    width: 48px;
+    height: 48px;
+    border: 5px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+
+
+ .waitingDiv h3 {
+    padding: 7px;
+}
+
+.waitingDiv p {
+    padding: 6px 0px;
+}
+
+input#yourName {
+    margin: 20px;
+    height: 45px;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    box-shadow: none;
+    width: 350px;
+    font-size: 20px;
+    margin: 20px auto;
+}
+
+ul.list-group.names-post {
+    width: 90%;
+    margin: 0 auto;
+    overflow-y: scroll;
+    height: 170px;
+}
+
+input#codigoSorteo {
+    height: 35px;
+    border: none;
+    box-shadow: none;
+    border-radius: 6px;
+    padding: 14px;
+    font-size: 20px;
+    width: 180px;
+    position: relative;
+    top: 3px;
+}
+
+div#codeDiv {
+    padding: 20px 0px;
+}
+
+
+.magicBtn{
+    background-color: black;
+    cursor: pointer;
+    border: none;
+    padding: 16px 32px;
+    color: #FFF;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    border-radius: 12px;
+    margin: 45px 0px;
+}
+
+.magicBtn::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        red, blue, deeppink, blue,
+        red, blue, deeppink, blue
+    );
+
+    background-size: 800%;
+    border-radius: 10px;
+    filter: blur(8px);
+    animation: glowing 20s linear infinite
+
+}
+
+@keyframes glowing {
+    0% {
+        background-position: 0 0;
+    }
+
+    50%{
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+#get88{
+    display: none;
+    padding: 20px;
+}
+
+#finalForAdmi{
+    display: none;
+}
+
+#getsecretName h3, #finalForAdmi h3 {
+    padding: 10px;
+}
+
+.row{
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+h3#secretCodeHolder {
+    font-size: 30px;
+    font-weight: 700;
+    color: #008000;
+}
+
+h3#secretAdmin, h3#secretUser{
+
+  font-size: 70px;
+  color: #fff;
+  font-family: cursive;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6, 0 0 25px #0073e6, 0 0 30px #0073e6, 0 0 35px #0073e6;
+    }
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0073e6, 0 0 40px #0073e6, 0 0 50px #0073e6, 0 0 60px #0073e6, 0 0 70px #0073e6;
+    }
+  }
+
+.fa-gift{
+    color: whitesmoke;
+    padding: 30px;
+    color: #fff;
+}
