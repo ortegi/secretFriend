@@ -11,11 +11,11 @@ window.getData = getData
 window.saveData = saveData;
 window.saveDataJoinSorteo = saveDataJoinSorteo
 window.getDataList = getDataList
-window.copy = copy
 window.setFriend = setFriend
 window.displaySecretFriend = displaySecretFriend
-window.setCode =  setCode
 window.checkNumOfPlayes = checkNumOfPlayes
+window.whatsapp = whatsapp
+window.isFriendReady = isFriendReady
 let code = ''
 
 
@@ -34,15 +34,17 @@ function codeGenerator(){
 }
 
 
+//Shares the code via Whatsapp
 
-function setCode(){
-    document.getElementById('secretCodeHolder').innerHTML = code
+function whatsapp(){
+
+    window.open(`whatsapp://send?text=${code} `)
 }
 
 
 
 
-
+/*
 function copy(){
     //Get the text field
     let copyText = document.getElementById('codigoSorteo');
@@ -55,7 +57,7 @@ function copy(){
   navigator.clipboard.writeText(copyText.value);
 
     showMessage('Code copied')
-}
+}*/
 
 //Cambia una pantalla por otra
 
@@ -250,6 +252,8 @@ async function setFriend(name, friendName){
         console.log(error)
     }
 
+
+
 }
 
 
@@ -291,4 +295,18 @@ async function getSecretFriend(codex, name, id){
   
 
     
+}
+
+
+async function isFriendReady(){
+
+    let playerData  = getData('code', 'nameToJoin')
+    const docRef = doc(db, playerData[0], playerData[1]);
+    const docSnap = await getDoc(docRef);
+    let datax = docSnap.data()
+    if(datax.friend){
+        next('waintingJoin', 'getsecretName')
+    }else {
+        showMessage('Parece que aún no estamos listos, espera unos segundos y vuelve a pulsar siguiente!','ño')
+    }
 }

@@ -21,22 +21,63 @@
     
 </head>
 <body>
+
     <div class="container">
+        
+
         <div class="row">
-                
-            <div class="col text-center">
-                <img src="robotin.png" height="200" width="200">
+            <div class="col">
+                <div class="snowflake">
+                    ❅
+                    </div>
+                    <div class="snowflake">
+                    ❅
+                    </div>
+                    <div class="snowflake">
+                    ❆
+                    </div>
+                    <div class="snowflake">
+                    ❄
+                    </div>
+                    <div class="snowflake">
+                    ❅
+                    </div>
+                    <div class="snowflake">
+                    ❆
+                    </div>
+                    <div class="snowflake">
+                    ❄
+                    </div>
+                    <div class="snowflake">
+                    ❅
+                    </div>
+                    <div class="snowflake">
+                    ❆
+                    </div>
+                    <div class="snowflake">
+                    ❄
+                    </div>              
+
             </div>
 
         </div>
+        <div class="row">
+
+
+            <div class="col text-center">
+
+                <img src="./secret.png" height="200" width="100">
+
+            </div>
+        </div>
+
 
         <div class="row">
 
             <div class="col text-center">
 
-                <h1 class="text-light">Amigo invisible</h1>
+                <div class="logo"><b>Ami<span>go</span> <br> In<span>vi</span><span>sible</span></b></div>
 
-                <h3 id="secretCodeHolder"> </h3>
             </div>
             
 
@@ -46,7 +87,7 @@
         <div class="row" id="startPage">
             <div class="col text-center btn-col">
             
-                <button type="button" class="btn btn-primary btn-lg" onclick="next('startPage', 'sorteoPage');codeGenerator();">Empezar un sorteo</button>
+                <button type="button" class="btn btn-primary btn-lg" onclick="next('startPage', 'AddNumPeople');">Empezar un sorteo</button>
                 <button type="button" class="btn btn-primary btn-lg" onclick="next('startPage', 'addCode')">Unirse a un sorteo</button>
 
             </div>
@@ -56,50 +97,20 @@
     </div>
 
 
-    <!--Codigo de sorteo-->
-    <div class="row" id="sorteoPage">
-        <div class="col text-center lay">
-            <h3>Codigo de sorteo</h3>
-            <div id="codeDiv">
-                <input id="codigoSorteo" type="text"> 
-                <button class = 'btn btn-primary'onclick="copy()">Copy code</button>
-            </div>
-            
+</div>
 
-            <button type="button" class="btn btn-primary btn-lg" onclick="next('sorteoPage', 'AddNumPeople'); setCode();">Siguiente</button>
+    <!--ADD numero de partipantes-->
+    <div class="row" id="AddNumPeople">
+    <div class="col text-center lay">
+        <div class="input-group mb-3">
+            <h3 class='text-center'>Añadir número de parcipantes</h3>
+            <input type="number" id="participantes" class="form-control participants-form" placeholder = '5' autocomplete="nope">
         </div>
-
+        <button type="button" class="btn btn-primary btn-lg" id="participantsBtn" onclick="checkForms('participantes', 'AddNumPeople', 'addName'); codeGenerator();">Siguiente</button>
     </div>
 
     </div>
 
-     <!--ADD numero de partipantes-->
-     <div class="row" id="AddNumPeople">
-        <div class="col text-center lay">
-            <div class="input-group mb-3">
-                <h3 class='text-center'>Añadir número de parcipantes</h3>
-                <input type="number" id="participantes" class="form-control participants-form" placeholder = '5'>
-            </div>
-            <button type="button" class="btn btn-primary btn-lg" id="participantsBtn" onclick="checkForms('participantes', 'AddNumPeople', 'addMoney');">Siguiente</button>
-        </div>
-
-    </div>
-
-    <!--Añadir monto del regalo-->
-
-    <div class="row" id="addMoney">
-        <div class="col text-center lay"> 
-            <div class="input-group mb-3">
-                <h3 class='text-center'>Añadir precio del regalo</h3>
-                <input type="number" id='form-money' class="form-control money" placeholder = '200' aria-label="Amount (to the nearest dollar)">
-                <div class="input-group-append">
-                  <span class="input-group-text">.00€</span>
-                </div>
-            </div>
-            <button type="button" id= 'moneyBtn' class="btn btn-primary btn-lg" onclick="checkForms('form-money', 'addMoney', 'addName');">Siguiente</button>
-        </div>
-
-    </div>
 
     <!--Añadir nombre-->
 
@@ -108,12 +119,34 @@
         <div class="col text-center lay">
             <div class="inputName">
                 <h3 class='text-center'>Añadir nombre</h3> 
-                <input type="text" id="yourName" class="yourName-form" placeholder = 'Maria'>
+                <input type="text" id="yourName" class="yourName-form" placeholder = 'Maria' autocomplete="nope">
             </div>
-            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkForms('yourName', 'addName', 'waitingPage'); saveData('participantes', 'yourName');">Siguiente</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkForms('yourName', 'addName', 'sorteoPage'); ">Siguiente</button>
         </div>
 
     </div>
+
+    <!--Codigo de sorteo-->
+    <div class="row" id="sorteoPage">
+        <div class="col text-center lay">
+            <h3>Codigo de sorteo</h3>
+            <div id="codeDiv">
+                <input id="codigoSorteo" type="text" autocomplete="nope"> 
+                <button class = 'btn btn-primary wp' onclick="whatsapp(); saveData('participantes', 'yourName')">
+                    <i class="fa-brands fa-whatsapp fa-2x"></i>
+                </button>
+            </div>
+            
+
+            <button type="button" class="btn btn-primary btn-lg" onclick="next('sorteoPage', 'waitingPage');">Siguiente</button>
+        </div>
+
+    </div>
+
+    
+
+
+    
     
     
 <!--Página  de espera-->
@@ -169,7 +202,7 @@
         <div class="col text-center lay">
             
             <h3> Añade el codigo</h3>
-            <input class="form-control" type="text" placeholder="6A7D8A" id="code">
+            <input class="form-control" type="text" placeholder="6A7D8A" id="code" autocomplete="nope">
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkForms('code', 'addCode', 'addNameToJoin')">Siguiente</button>
         </div>
 
@@ -183,7 +216,7 @@
         <div class="col text-center lay">
             
             <h3> Dinos tu nombre</h3>
-            <input class="form-control" type="text" placeholder="Juanito" id="nameToJoin">
+            <input class="form-control" type="text" autocomplete="nope" placeholder="Juanito" id="nameToJoin" >
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="checkForms('nameToJoin', 'addNameToJoin', 'waintingJoin'); saveDataJoinSorteo()">Siguiente</button>
         </div>
 
@@ -206,9 +239,7 @@
            
 
             <div id="get88">
-                <h3>Sorteo en proceso...</h3>
-                <h3>Espera unos segundos!</h3>
-                <button class="btn btn-primary btn-lg btn-block" onclick="next('waintingJoin', 'getsecretName')"> Siguiente</button>
+                <button class="btn btn-primary btn-lg btn-block" onclick="isFriendReady()"> Siguiente</button>
             </div>
            
             

@@ -50,3 +50,4 @@ export const setUpList = (data) => {
     return  nameList
 }
 
+
