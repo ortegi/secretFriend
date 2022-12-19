@@ -38,7 +38,7 @@ function codeGenerator(){
 
 function whatsapp(){
 
-    window.open(`whatsapp://send?text=${code} `)
+    window.open(`whatsapp://send?text=codigo: ${code} enlace: https://ortegi.github.io/secretFriend/ `)
 }
 
 
