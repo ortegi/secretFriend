@@ -13,12 +13,10 @@ body{
 
 
 img{
-    
     position: absolute;
-
-    right: 36px;
-    top: 85px;
-    
+    top: 15%;
+    right: 10%;
+    z-index: -1;
 }
 
 h1{
@@ -251,9 +249,7 @@ h3#secretAdmin, h3#secretUser, .title{
     text-align: left;
 }
 
-input{
-    border-radius: 6px;
-}
+
 
   
 .logo b{
@@ -271,7 +267,6 @@ input{
 @media only screen and (min-width: 500px){
 
 button.btn.btn-primary.btn-lg{
-
     width: 400px;
     display: block;
     margin: 10px auto;
@@ -280,6 +275,7 @@ button.btn.btn-primary.btn-lg{
 
 .logo{
     margin-top: 50px;
+    text-align: center;
 }
 
 
@@ -302,6 +298,75 @@ input.form-control {
 
 }
 
+
+@media only screen and (min-width: 800px){
+
+    img {
+        position: absolute;
+        right: 20%;
+        top: 20%;
+    }
+
+    
+   
+
+
+}
+
+@media only screen and (min-width: 1000px) {
+
+    img {
+        position: absolute;
+        right: 35%;
+        top: 20%;
+    }
+
+
+    .logo{
+        margin-top: 57px;
+        margin-left: 99px;
+        text-align: center;
+    }
+
+
+    
+    button.btn.btn-primary.btn-lg {
+        padding: 30px;
+        font-size: 29px;
+        width: 500px;
+
+        
+    }
+
+
+}
+
+@media only screen and (min-width: 700px) and (max-width: 950px){
+
+   
+
+
+    .logo{
+        margin-top: 57px;
+        margin-left: 152px;
+        text-align: center;
+    }
+
+
+    button.btn.btn-primary.btn-lg {
+        padding: 30px;
+        font-size: 29px;
+        
+    }
+
+    img {
+        position: absolute;
+        right: 20%;
+        top: 20%;
+    }
+
+
+}
 
 .snowflake {
     color: #fff;
