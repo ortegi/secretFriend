@@ -16,7 +16,8 @@ window.displaySecretFriend = displaySecretFriend
 window.checkNumOfPlayes = checkNumOfPlayes
 window.whatsapp = whatsapp
 window.isFriendReady = isFriendReady
-window. getParam =  getParam
+window.getParam =  getParam
+
 let code = ''
 
 
@@ -38,15 +39,26 @@ function codeGenerator(){
 //Shares the code via Whatsapp
 
 function whatsapp(){
-
-    window.open(`whatsapp://send?text=https://ortegi.github.io/secretFriend/&code=${code} `)
+    const url = document.URL
+    window.open(`whatsapp://send?text=${url}?code=${code} `)
 }
 
 
 function getParam(){
-    const queryString = window.location.search
-    console.log(queryString)
+    const queryString = document.URL
+    let paramString = queryString.split('?')
+    console.log(paramString)
+    if(paramString.length == 2){
+        let kodeX = paramString[1].split('=')
+        let kode = kodeX[1]
+        document.getElementById('code').value = kode
+    }
+    
 }
+
+
+
+
 
 
 //Cambia una pantalla por otra
