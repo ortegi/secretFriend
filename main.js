@@ -16,6 +16,7 @@ window.displaySecretFriend = displaySecretFriend
 window.checkNumOfPlayes = checkNumOfPlayes
 window.whatsapp = whatsapp
 window.isFriendReady = isFriendReady
+window. getParam =  getParam
 let code = ''
 
 
@@ -38,26 +39,15 @@ function codeGenerator(){
 
 function whatsapp(){
 
-    window.open(`whatsapp://send?text=codigo: ${code} enlace: https://ortegi.github.io/secretFriend/ `)
+    window.open(`whatsapp://send?text=https://ortegi.github.io/secretFriend/&code=${code} `)
 }
 
 
+function getParam(){
+    const queryString = window.location.search
+    console.log(queryString)
+}
 
-
-/*
-function copy(){
-    //Get the text field
-    let copyText = document.getElementById('codigoSorteo');
-
-    //Select the text field
-    copyText.select()
-    copyText.setSelectionRange(0, 99999) //For mobile devices
-
-    // Copy the text inside the text field
-  navigator.clipboard.writeText(copyText.value);
-
-    showMessage('Code copied')
-}*/
 
 //Cambia una pantalla por otra
 
@@ -258,7 +248,7 @@ async function setFriend(name, friendName){
 
 
 function displaySecretFriend(situation){
-    let secretFriend = ''
+    
     
     if(situation == 'admin'){
         let data = getData('participantes', 'yourName')
