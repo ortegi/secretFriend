@@ -52,7 +52,7 @@ function getParam(){
         let kodeX = paramString[1].split('=')
         let kode = kodeX[1]
         document.getElementById('code').value = kode
-        next("addCode", 'addNameToJoin')
+      
     }
     
 }
